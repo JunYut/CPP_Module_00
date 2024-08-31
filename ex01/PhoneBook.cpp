@@ -11,7 +11,7 @@ void	PhoneBook::add_contact(const Contact& contact)
 		{
 			arr[i].first_name(contact.first_name());
 			arr[i].last_name(contact.last_name());
-			arr[i].nickname(contact.last_name());
+			arr[i].nickname(contact.nickname());
 			arr[i].phone_number(contact.phone_number());
 			arr[i].darkest_secret(contact.darkest_secret());
 			break;

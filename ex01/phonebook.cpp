@@ -25,17 +25,31 @@ void	exit(void)
 
 int	display(const PhoneBook& pb)
 {
-	(void)pb;
+	Contact 			curr;
+	std::stringstream	ss;
+
 	format_field("Index");		cout << '|';
 	format_field("First Name");	cout << '|';
 	format_field("Last Name");	cout << '|';
-	format_field("Nickname");		cout << endl;
+	format_field("Nickname");	cout << endl;
+	for (size_t i = 0; i < 8; i++)
+	{
+		curr = pb.get_contact(i);
+		if (!curr.first_name().empty())
+		{
+			ss << i + 1;
+			format_field(ss.str());			cout << '|';
+			format_field(curr.first_name());	cout << '|';
+			format_field(curr.last_name());	cout << '|';
+			format_field(curr.nickname());	cout << endl;
+		}
+	}
 	return (0);
 }
 
-int	format_field(const std::string& unit)
+int	format_field(const std::string& field)
 {
-	cout << setw(10) << right << truncate(unit, 10);
+	cout << setw(10) << right << truncate(field, 10);
 	return (0);
 }
 

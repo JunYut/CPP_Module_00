@@ -1,5 +1,5 @@
 all: *.cpp *.hpp
-	clang++ -Wall -Wextra -Werror -std=c++98 -I. *.cpp -o phonebook
+	clang++ -Wall -Wextra -Werror -std=c++98 -g3 -I. *.cpp -o phonebook
 
 run: all
 	./phonebook
