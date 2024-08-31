@@ -26,10 +26,16 @@ void	exit(void)
 int	display(const PhoneBook& pb)
 {
 	(void)pb;
-	cout << setw(10) << right << truncate("Index|", 10) + '|';
-	cout << setw(10) << right << truncate("First Name|", 10) + '|';
-	cout << setw(10) << right << truncate("Last Name|", 10) + '|';
-	cout << setw(10) << right << truncate("Nickname", 10) << endl;
+	format_field("Index");		cout << '|';
+	format_field("First Name");	cout << '|';
+	format_field("Last Name");	cout << '|';
+	format_field("Nickname");		cout << endl;
+	return (0);
+}
+
+int	format_field(const std::string& unit)
+{
+	cout << setw(10) << right << truncate(unit, 10);
 	return (0);
 }
 
