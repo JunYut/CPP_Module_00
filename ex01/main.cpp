@@ -14,6 +14,7 @@ int	main(void)
 	contact.nickname("Little Doe");
 	pb.add_contact(contact);
 
-	search_prompt();
+	add(pb);
+	display_contact(pb);
 	return 0;
 }

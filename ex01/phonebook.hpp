@@ -3,6 +3,7 @@
 	# define __PHONEBOOK_H__
 
 	# include "PhoneBook.hpp"
+	# include <cstdlib>
 	# include <sstream>
 	# include <string>
 	# include <iomanip>

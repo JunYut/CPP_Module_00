@@ -12,19 +12,38 @@ using std::string;
 
 int	add(PhoneBook& pb)
 {
-	(void)pb;
+	Contact	contact;
+	string	input;
+
+	cout << "Enter first name: ";
+	cin >> input;
+	contact.first_name(input);
+	cout << "Enter last name: ";
+	cin >> input;
+	contact.last_name(input);
+	cout << "Enter nickname: ";
+	cin >> input;
+	contact.nickname(input);
+	cout << "Enter phone number: ";
+	cin >> input;
+	contact.phone_number(input);
+	cout << "Enter darkest secret: ";
+	cin >> input;
+	contact.darkest_secret(input);
+	pb.add_contact(contact);
 	return (1);
 }
 
 int	search(const PhoneBook& pb)
 {
 	display_contact(pb);
-	search_prompt();
+	display_ent(pb, search_prompt() - 1);
 	return (1);
 }
 
 void	exit(void)
 {
+	std::exit(0);
 	return ;
 }
 
@@ -38,6 +57,11 @@ int	display_ent(const PhoneBook& pb, int index)
 		return (0);
 	}
 	contact = pb.get_contact(index);
+	if (contact.first_name().empty())
+	{
+		cout << index + 1 << ": empty entry\n";
+		return (1);
+	}
 	cout << "First Name    : " + contact.first_name() << endl;
 	cout << "Last Name     : " + contact.last_name() << endl;
 	cout << "Nickname      : " + contact.nickname() << endl;
@@ -55,7 +79,8 @@ int	search_prompt(void)
 	{
 		cout << "Enter entry index to display: ";
 		cin >> input;
-
+		if (input.compare("EXIT") == 0)
+			exit();
 		try
 		{
 			index = stoi(input);
@@ -83,6 +108,8 @@ int	display_contact(const PhoneBook& pb)
 		curr = pb.get_contact(i);
 		if (!curr.first_name().empty())
 		{
+			ss.str("");
+			ss.clear();
 			ss << i + 1;
 			format_field(ss.str());			cout << '|';
 			format_field(curr.first_name());	cout << '|';
@@ -113,7 +140,7 @@ int	stoi(const string& str)
 
 	if (!(ss >> num) || !(ss.eof()))
 		throw (std::invalid_argument("not a number"));
-	if (num < 0 || num >= 8)
+	if (num < 1 || num > 8)
 		throw (std::out_of_range("out of range"));
 	return (num);
 }
