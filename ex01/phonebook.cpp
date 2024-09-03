@@ -2,9 +2,11 @@
 
 using std::setw;
 using std::right;
+using std::cerr;
 using std::cin;
 using std::cout;
 using std::endl;
+using std::exception;
 using std::stringstream;
 using std::string;
 
@@ -32,7 +34,7 @@ int	display_ent(const PhoneBook& pb, int index)
 
 	if (index < 0 || index >= 8)
 	{
-		cout << "Invalid index: out of bounds" << endl;
+		cerr << "Invalid index: out of bounds" << endl;
 		return (0);
 	}
 	contact = pb.get_contact(index);
@@ -47,15 +49,24 @@ int	display_ent(const PhoneBook& pb, int index)
 int	search_prompt(void)
 {
 	string	input;
+	int		index;
 
-	cout << "Enter entry index to display: ";
-	cin >> input;
-	if (input.empty())
+	while (true)
 	{
-		cout << "Invalid input: empty string" << endl;
-		return (0);
+		cout << "Enter entry index to display: ";
+		cin >> input;
+
+		try
+		{
+			index = stoi(input);
+			break;
+		}
+		catch (const exception& e)
+		{
+			cerr << "Invalid input: [" + input + "]: " << e.what() << '\n';
+		}
 	}
-	return (1);
+	return (index);
 }
 
 int	display_contact(const PhoneBook& pb)
@@ -93,4 +104,16 @@ string	truncate(const string& str, size_t width)
 	if (str.length() > width)
 		return (str.substr(0, width - 1) + '.');
 	return (str);
+}
+
+int	stoi(const string& str)
+{
+	stringstream	ss(str);
+	int				num;
+
+	if (!(ss >> num) || !(ss.eof()))
+		throw (std::invalid_argument("not a number"));
+	if (num < 0 || num >= 8)
+		throw (std::out_of_range("out of range"));
+	return (num);
 }

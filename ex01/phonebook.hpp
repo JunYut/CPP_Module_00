@@ -16,5 +16,6 @@
 	int			display_contact(const PhoneBook& pb);
 	int			format_field(const std::string& str);
 	std::string	truncate(const std::string& str, size_t width);
+	int			stoi(const std::string& str);
 
 # endif
