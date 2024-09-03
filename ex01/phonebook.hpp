@@ -6,12 +6,14 @@
 	# include <cstdlib>
 	# include <sstream>
 	# include <string>
+	# include <limits>
 	# include <iomanip>
 	# include <iostream>
 
 	int			add(PhoneBook& pb);
 	int			search(const PhoneBook& pb);
 	void		exit(void);
+	std::string	add_prompt(const std::string& prompt);
 	int			display_ent(const PhoneBook& pb, int index);
 	int			search_prompt(void);
 	int			display_contact(const PhoneBook& pb);

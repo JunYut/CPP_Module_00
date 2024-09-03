@@ -15,20 +15,15 @@ int	add(PhoneBook& pb)
 	Contact	contact;
 	string	input;
 
-	cout << "Enter first name: ";
-	cin >> input;
+	input = add_prompt("Enter first name");
 	contact.first_name(input);
-	cout << "Enter last name: ";
-	cin >> input;
+	input = add_prompt("Enter last name");
 	contact.last_name(input);
-	cout << "Enter nickname: ";
-	cin >> input;
+	input = add_prompt("Enter nickname");
 	contact.nickname(input);
-	cout << "Enter phone number: ";
-	cin >> input;
+	input = add_prompt("Enter phone number");
 	contact.phone_number(input);
-	cout << "Enter darkest secret: ";
-	cin >> input;
+	input = add_prompt("Enter darkest secret");
 	contact.darkest_secret(input);
 	pb.add_contact(contact);
 	return (1);
@@ -45,6 +40,43 @@ void	exit(void)
 {
 	std::exit(0);
 	return ;
+}
+
+string add_prompt(const string& prompt)
+{
+    string input;
+
+    while (true)
+    {
+        cout << prompt + ": ";
+        if (!(cin >> input)) // Check if std::cin is in a fail state
+        {
+            if (cin.eof()) // Check if the fail state is due to EOF
+            {
+                cerr << "EOF received. Exiting input loop.\n";
+                std::exit(0); // Exit the program or handle as needed
+            }
+            else
+            {
+                cerr << "Input error. Please try again.\n";
+                cin.clear(); // Clear the fail state
+                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore the rest of the line
+                continue;
+            }
+        }
+        if (input.empty())
+        {
+            cerr << "Invalid input: empty string\n";
+            continue;
+        }
+        if (prompt == "Enter phone number" && input.size() != 11)
+        {
+            cerr << "Invalid input: phone no. must be 11 digits\n";
+            continue;
+        }
+        break;
+    }
+    return input;
 }
 
 int	display_ent(const PhoneBook& pb, int index)
@@ -79,7 +111,7 @@ int	search_prompt(void)
 	{
 		cout << "Enter entry index to display: ";
 		cin >> input;
-		if (input.compare("EXIT") == 0)
+		if (input == "EXIT")
 			exit();
 		try
 		{
