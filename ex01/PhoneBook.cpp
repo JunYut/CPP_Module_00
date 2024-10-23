@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:53:17 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/23 14:52:55 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:15:39 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void PhoneBook::add_contact(Contact &contact)
 	i = -1;
 	while (++i < 8)
 	{
-		if (contacts[i].get_first_name() == "")
+		if (contacts[i].is_empty())
 		{
 			contacts[i] = contact;
 			break ;
@@ -31,7 +31,7 @@ void PhoneBook::add_contact(Contact &contact)
 
 void PhoneBook::print_contact(int index)
 {
-	if (index < 0 || index > 7 || contacts[index].get_first_name() == "")
+	if (index < 0 || index > 7 || contacts[index].is_empty())
 	{
 		std::cout << "Invalid index." << std::endl;
 		return ;
@@ -48,7 +48,7 @@ void PhoneBook::print_contact_list()
 	std::cout << std::setw(10) << "Nickname" << std::endl;
 	for (int i = 0; i < 8; ++i)
 	{
-		if (contacts[i].get_first_name() != "")
+		if (!contacts[i].is_empty())
 		{
 			std::cout << std::setw(10) << i + 1 << "|";
 			std::cout << std::setw(10) << truncate_str(contacts[i].get_first_name()) << "|";

@@ -6,11 +6,18 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:37:40 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/23 13:27:39 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:13:52 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Contact.hpp"
+
+bool Contact::is_empty()
+{
+	if (this->_first_name.empty())
+		return (true);
+	return (false);
+}
 
 void Contact::set_first_name(std::string first_name)
 {

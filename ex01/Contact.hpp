@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:26:56 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/23 13:21:57 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:13:23 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Contact
 		std::string _darkest_secret;
 
 	public:
+		bool is_empty();
 		void set_first_name(std::string first_name);
 		void set_last_name(std::string last_name);
 		void set_nickname(std::string nickname);
