@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:26:56 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/23 10:38:05 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/23 13:21:57 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # ifndef CONTACT_HPP
 # define CONTACT_HPP
 
+# include <iomanip>
 # include <iostream>
 
 class Contact

@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:37:40 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/23 10:38:39 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/23 13:27:39 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,10 @@ std::string Contact::get_darkest_secret()
 
 void Contact::print_contact()
 {
-	std::cout << "First Name: " << this->_first_name << std::endl;
-	std::cout << "Last Name: " << this->_last_name << std::endl;
-	std::cout << "Nickname: " << this->_nickname << std::endl;
-	std::cout << "Phone Number: " << this->_phone_number << std::endl;
-	std::cout << "Darkest Secret: " << this->_darkest_secret << std::endl;
+	std::cout << std::left;
+	std::cout << std::setw(16) << "First Name" << ":" + this->_first_name << std::endl;
+	std::cout << std::setw(16) << "Last Name" << ":" + this->_last_name << std::endl;
+	std::cout << std::setw(16) << "Nickname" << ":" + this->_nickname << std::endl;
+	std::cout << std::setw(16) << "Phone Number" << ":" + this->_phone_number << std::endl;
+	std::cout << std::setw(16) << "Darkest Secret" << ":" + this->_darkest_secret << std::endl;
 }
