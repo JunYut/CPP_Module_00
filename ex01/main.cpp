@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:39:54 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/23 14:57:45 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/23 15:04:35 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ int	main(void)
 
 		}
 		else if (command == "SEARCH")
-		{
-
-		}
+			search(phonebook);
 		else
 			std::cout << "Unknown command. Please enter ADD, SEARCH, or EXIT." << std::endl;
 	}

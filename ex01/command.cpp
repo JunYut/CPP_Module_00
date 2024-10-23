@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   command.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/23 10:45:41 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/23 15:03:29 by tjun-yu          ###   ########.fr       */
+/*   Created: 2024/10/23 14:59:58 by tjun-yu           #+#    #+#             */
+/*   Updated: 2024/10/23 15:06:51 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# pragma once
-# ifndef PHONEBOOK_HPP
-#  define PHONEBOOK_HPP
+# include "PhoneBook.hpp"
 
-# include "Contact.hpp"
-
-class PhoneBook
+// int	add(PhoneBook &phonebook);
+int	search(PhoneBook &phonebook)
 {
-	private:
-		Contact contacts[8];
+	int	index;
 
-	public:
-		void add_contact(Contact &contact);
-		void print_contact(int index);
-		void print_contact_list();
-};
-
-int	add(PhoneBook &phonebook);
-int	search(PhoneBook &phonebook);
-
-# endif
+	phonebook.print_contact_list();
+	std::cout << "Enter the index of the contact you want to see: ";
+	std::cin >> index;
+	phonebook.print_contact(index);
+	return (0);
+}
