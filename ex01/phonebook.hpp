@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:45:41 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/23 13:00:05 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/23 14:44:31 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class PhoneBook
 
 	public:
 		void add_contact(Contact &contact);
-		void search_contact();
 		void print_contact(int index);
 		void print_contact_list();
 };
