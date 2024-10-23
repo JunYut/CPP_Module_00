@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:39:54 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/23 13:57:42 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/23 14:57:45 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,25 @@
 
 int	main(void)
 {
-	PhoneBook phonebook;
-	Contact contact;
+	PhoneBook	phonebook;
+	std::string	command;
 
-	contact.set_first_name("aLongLongName");
-	contact.set_last_name("Tan");
-	contact.set_nickname("Jun yu");
-	contact.set_phone_number("1234567890");
-	contact.set_darkest_secret("I am a student at 42.");
-	// contact.print_contact();
+	while (1)
+	{
+		std::cout << "Please enter a command: ";
+		std::cin >> command;
+		if (command == "EXIT")
+			break;
+		else if (command == "ADD")
+		{
 
-	phonebook.add_contact(contact);
-	phonebook.print_contact_list();
-	phonebook.print_contact(0);
+		}
+		else if (command == "SEARCH")
+		{
+
+		}
+		else
+			std::cout << "Unknown command. Please enter ADD, SEARCH, or EXIT." << std::endl;
+	}
 	return (0);
 }

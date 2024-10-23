@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:53:17 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/23 14:43:59 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/23 14:52:55 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ void PhoneBook::add_contact(Contact &contact)
 
 void PhoneBook::print_contact(int index)
 {
+	if (index < 0 || index > 7 || contacts[index].get_first_name() == "")
+	{
+		std::cout << "Invalid index." << std::endl;
+		return ;
+	}
 	this->contacts[index].print_contact();
 }
 
