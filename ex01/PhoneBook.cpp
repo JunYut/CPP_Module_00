@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:53:17 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/23 13:06:23 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/23 13:30:51 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ void PhoneBook::add_contact(Contact &contact)
 }
 
 // void PhoneBook::search_contact();
-// void PhoneBook::print_contact(int index);
+void PhoneBook::print_contact(int index)
+{
+	this->contacts[index].print_contact();
+}
+
 void PhoneBook::print_contact_list()
 {
 	for (int i = 0; i < 8; ++i)
