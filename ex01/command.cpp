@@ -6,12 +6,13 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:59:58 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/24 13:13:29 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/24 13:31:49 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "PhoneBook.hpp"
 
+static bool	valid_phone_number(const std::string &str);
 static void	trim_str(std::string &str);
 
 std::string	prompt(const std::string &msg)
@@ -38,7 +39,9 @@ int	add(PhoneBook &phonebook)
 	contact.set_last_name(input);
 	input = prompt("Enter the nickname: ");
 	contact.set_nickname(input);
-	input = prompt("Enter the phone number: ");
+	do
+		input = prompt("Enter the phone number: ");
+	while (!valid_phone_number(input));
 	contact.set_phone_number(input);
 	input = prompt("Enter the darkest secret: ");
 	contact.set_darkest_secret(input);
@@ -69,6 +72,16 @@ int	search(PhoneBook &phonebook)
 	}
 	phonebook.print_contact(index - 1);
 	return (0);
+}
+
+static bool	valid_phone_number(const std::string &str)
+{
+	if (str.length() != 10 || str.find_first_not_of("0123456789") != std::string::npos)
+	{
+		std::cout << "Invalid phone number. Please enter a 10-digit number." << std::endl;
+		return (false);
+	}
+	return (true);
 }
 
 static void	trim_str(std::string &str)
