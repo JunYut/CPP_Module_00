@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:39:54 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/23 15:04:35 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/24 10:50:53 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,11 @@ int	main(void)
 	while (1)
 	{
 		std::cout << "Please enter a command: ";
-		std::cin >> command;
+		std::getline(std::cin, command);
 		if (command == "EXIT")
 			break;
 		else if (command == "ADD")
-		{
-
-		}
+			add(phonebook);
 		else if (command == "SEARCH")
 			search(phonebook);
 		else

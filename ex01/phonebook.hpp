@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:45:41 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/23 15:03:29 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/24 10:41:08 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 class PhoneBook
 {
 	private:
-		Contact contacts[8];
+		Contact _contacts[8];
 
 	public:
-		void add_contact(Contact &contact);
-		void print_contact(int index);
-		void print_contact_list();
+		void	add_contact(Contact &contact);
+		void	print_contact(int index);
+		void	print_contact_list(void);
+		Contact	*get_contact(int index);
 };
 
 int	add(PhoneBook &phonebook);

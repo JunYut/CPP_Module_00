@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 12:53:17 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/23 15:15:39 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/24 10:44:30 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,33 @@ static std::string	truncate_str(std::string str);
 
 void PhoneBook::add_contact(Contact &contact)
 {
-	int	i;
+	static int	oldest;
+	int			i;
 
 	i = -1;
 	while (++i < 8)
 	{
-		if (contacts[i].is_empty())
+		if (_contacts[i].is_empty())
 		{
-			contacts[i] = contact;
-			break ;
+			_contacts[i] = contact;
+			return ;
 		}
 	}
+	_contacts[oldest] = contact;
+	oldest = (oldest + 1) % 8;
 }
 
 void PhoneBook::print_contact(int index)
 {
-	if (index < 0 || index > 7 || contacts[index].is_empty())
+	if (index < 0 || index > 7 || _contacts[index].is_empty())
 	{
 		std::cout << "Invalid index." << std::endl;
 		return ;
 	}
-	this->contacts[index].print_contact();
+	_contacts[index].print_contact();
 }
 
-void PhoneBook::print_contact_list()
+void PhoneBook::print_contact_list(void)
 {
 	std::cout << std::right;
 	std::cout << std::setw(10) << "Index" << "|";
@@ -48,14 +51,24 @@ void PhoneBook::print_contact_list()
 	std::cout << std::setw(10) << "Nickname" << std::endl;
 	for (int i = 0; i < 8; ++i)
 	{
-		if (!contacts[i].is_empty())
+		if (!_contacts[i].is_empty())
 		{
 			std::cout << std::setw(10) << i + 1 << "|";
-			std::cout << std::setw(10) << truncate_str(contacts[i].get_first_name()) << "|";
-			std::cout << std::setw(10) << truncate_str(contacts[i].get_last_name()) << "|";
-			std::cout << std::setw(10) << truncate_str(contacts[i].get_nickname()) << std::endl;
+			std::cout << std::setw(10) << truncate_str(_contacts[i].get_first_name()) << "|";
+			std::cout << std::setw(10) << truncate_str(_contacts[i].get_last_name()) << "|";
+			std::cout << std::setw(10) << truncate_str(_contacts[i].get_nickname()) << std::endl;
 		}
 	}
+}
+
+Contact	*PhoneBook::get_contact(int index)
+{
+	if (index < 0 || index > 7 || _contacts[index].is_empty())
+	{
+		std::cout << "Invalid index." << std::endl;
+		return (NULL);
+	}
+	return (&_contacts[index]);
 }
 
 static std::string	truncate_str(std::string str)
