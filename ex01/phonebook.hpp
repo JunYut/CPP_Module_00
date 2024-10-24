@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 10:45:41 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/24 12:54:49 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/24 13:03:05 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class PhoneBook
 };
 
 std::string	prompt(const std::string &msg);
-int	add(PhoneBook &phonebook);
-int	search(PhoneBook &phonebook);
+int			add(PhoneBook &phonebook);
+int			search(PhoneBook &phonebook);
 
 # endif

@@ -6,13 +6,13 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:59:58 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/24 12:55:09 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/10/24 13:13:29 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "PhoneBook.hpp"
 
-void	trim_str(std::string &str);
+static void	trim_str(std::string &str);
 
 std::string	prompt(const std::string &msg)
 {
@@ -52,13 +52,26 @@ int	search(PhoneBook &phonebook)
 
 	phonebook.print_contact_list();
 	std::cout << "Enter the index of the contact you want to see: ";
-	std::cin >> index;
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	while (true)
+	{
+		std::cin >> index;
+		if (std::cin.fail())
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "Invalid input. Please enter a valid integer: ";
+		}
+		else
+		{
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			break;
+		}
+	}
 	phonebook.print_contact(index - 1);
 	return (0);
 }
 
-void	trim_str(std::string &str)
+static void	trim_str(std::string &str)
 {
 	size_t	start;
 	size_t	end;
