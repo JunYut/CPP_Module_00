@@ -1,5 +1,7 @@
 # include <iostream>
+
 using std::cout;
+using std::endl;
 
 int	main(int argc, char *argv[])
 {
@@ -18,8 +20,9 @@ int	main(int argc, char *argv[])
 		j = -1;
 		while (argv[i][++j])
 			cout << (char)toupper(argv[i][j]);
-		cout << ' ';
+		if (i < argc - 1)
+			cout << ' ';
 	}
-	cout << "\n";
+	cout << std::endl;
 	return (0);
 }

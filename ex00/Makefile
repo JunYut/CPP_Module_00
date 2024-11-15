@@ -1,10 +1,21 @@
-all:
-	g++ -Wall -Wextra -Werror -std=c++98 *.cpp
+CC = g++
+CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c++98
+
+SRC = megaphone.cpp
+
+EXE = megaphone
+
+all: $(EXE)
+
+$(EXE): $(SRC)
+	$(CC) $(CFLAGS) $(SRC) -o $(EXE)
 
 run: all
-	./a.out
+	./$(EXE)
 
 clean:
-	rm -f a.out
+	rm -f $(EXE)
 
-.PHONY: all clean run
+re: clean all
+
+.PHONY: all run clean re
