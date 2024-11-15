@@ -6,7 +6,7 @@
 /*   By: tjun-yu <tjun-yu@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 14:59:58 by tjun-yu           #+#    #+#             */
-/*   Updated: 2024/10/28 10:17:22 by tjun-yu          ###   ########.fr       */
+/*   Updated: 2024/11/15 09:43:27 by tjun-yu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ std::string	prompt(const std::string &msg)
 		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			input.clear();
+			std::cout << std::endl;
 			exit(0);
-			break;
 		}
 		trim_str(input);
 	} while (input.empty());
@@ -66,6 +65,13 @@ int	search(PhoneBook &phonebook)
 	while (true)
 	{
 		std::cin >> index;
+		if (std::cin.eof())
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << std::endl;
+			exit(0);
+		}
 		if (std::cin.fail())
 		{
 			std::cin.clear();
